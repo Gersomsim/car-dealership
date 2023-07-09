@@ -1,8 +1,9 @@
 import { Controller, Get, Param, ParseIntPipe } from "@nestjs/common";
+import { CarsService } from "./cars.service";
 
 @Controller('cars')
 export class CarsController {
-  private cars = ['Toyota', 'Honda', 'Jeep'];
+  constructor(private carsService: CarsService) {}
   @Get()
   getAllCars() {
     return this.cars;
