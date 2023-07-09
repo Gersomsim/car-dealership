@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from "@nestjs/common";
 
 @Injectable()
 export class CarsService {
@@ -14,9 +14,18 @@ export class CarsService {
       model: 'Civic',
     },
     {
-      id: 1,
+      id: 3,
       brand: 'Jeep',
-      model: 'Cherokie',
+      model: 'Cherokee',
     },
   ];
+  findAll() {
+    return this.cars;
+  }
+  finOneById(id: number) {
+    const car = this.cars.find((car) => car.id === id);
+    if (!car) {
+      throw new NotFoundException(`Car with id ${id} not exist`);
+    }
+  }
 }

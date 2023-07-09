@@ -3,13 +3,13 @@ import { CarsService } from "./cars.service";
 
 @Controller('cars')
 export class CarsController {
-  constructor(private carsService: CarsService) {}
+  constructor(private readonly carsService: CarsService) {}
   @Get()
   getAllCars() {
-    return this.cars;
+    return this.carsService.findAll();
   }
   @Get(':carId')
   getOneCar(@Param('carId', ParseIntPipe) carId: number) {
-    return this.cars[carId];
+    return this.carsService.finOneById(carId);
   }
 }
