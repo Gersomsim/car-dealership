@@ -24,8 +24,7 @@ export class CarsService {
   }
   finOneById(id: number) {
     const car = this.cars.find((car) => car.id === id);
-    if (!car) {
-      throw new NotFoundException(`Car with id ${id} not exist`);
-    }
+    if (!car) throw new NotFoundException(`Car with id ${id} not exist`);
+    return car;
   }
 }
