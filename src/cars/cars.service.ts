@@ -59,4 +59,7 @@ export class CarsService {
     this.cars = this.cars.filter((c) => c.id !== id);
     return { message: 'deleted' };
   }
+  fillCars(cars: Car[]){
+    this.cars = cars;
+  }
 }

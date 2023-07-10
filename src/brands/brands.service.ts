@@ -3,6 +3,7 @@ import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
 import {v4 as uuid} from 'uuid'
 import { Brand } from "./entities/brand.entity";
+import { Car } from "../cars/interfaces/car.interface";
 
 @Injectable()
 export class BrandsService {
@@ -50,5 +51,8 @@ export class BrandsService {
     const brand = this.findOne(id);
     this.brands = this.brands.filter((b) => b.id !== id);
     return { message: 'deleted' };
+  }
+  fillCars(brands: Brand[]) {
+    this.brands = brands;
   }
 }
